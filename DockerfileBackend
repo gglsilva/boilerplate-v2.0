@@ -8,9 +8,6 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# install psycopg2 dependencies
-# RUN apk update \
-#     && apk add postgresql-dev gcc python3-dev musl-dev
 
 # install dependencies
 COPY Pipfile Pipfile.lock ./
@@ -21,7 +18,6 @@ RUN pip install -U pipenv
 # install project dependencies
 RUN pipenv install --system
 RUN apt-get update -y && \
-    #apt-get install build-dep python-psycopg2 && \
     apt-get install -y netcat
 
 # copy entrypoint.sh

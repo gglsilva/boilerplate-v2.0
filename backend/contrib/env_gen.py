@@ -16,12 +16,21 @@ DEBUG=True
 SECRET_KEY=%s
 ALLOWED_HOSTS=127.0.0.1,.localhost,0.0.0.0
 
-#DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME
-#POSTGRES_DB=
-#POSTGRES_USER=
-#POSTGRES_PASSWORD=%s
-#DB_HOST=localhost
 
+# Ambientes
+DJANGO_SETTINGS_MODULE=config.settings.development
+#DJANGO_SETTINGS_MODULE=config.settings.production
+
+
+# Database
+DB_NAME=data
+DB_USERNAME=postgres
+DB_PASSWORD=postgres123
+DB_HOSTNAME=db
+DB_PORT=5432
+
+
+# Email
 #DEFAULT_FROM_EMAIL=
 #EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
 #EMAIL_HOST=localhost
@@ -29,6 +38,18 @@ ALLOWED_HOSTS=127.0.0.1,.localhost,0.0.0.0
 #EMAIL_HOST_USER=
 #EMAIL_HOST_PASSWORD=
 #EMAIL_USE_TLS=True
+
+
+# Celery
+CELERY_BROKER_URL=redis://redis:6379/0
+
+
+# Redis
+REDIS_BACKEND=redis://redis:6379/0
+
+
+# NGINX
+NGINX_PORT=80
 """.strip() % (secret_key, password)
 
 # Writing our configuration file to '.env'
